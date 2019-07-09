@@ -80,7 +80,7 @@ if __name__ == "__main__":
     parser.add_argument("--solver", default="sag", type=str,
                         help="'solver' parameter")
     parser.add_argument("--n_jobs", type=int,
-                        help="'n_jobs' parameter")
+                        help="'n_jobs' parameter (works only for sklearn)")
     
     args = parser.parse_args()
     X, y = utility.dataset.load_np_binary(args.X_path, args.y_path)
@@ -92,4 +92,4 @@ if __name__ == "__main__":
         C=args.C, max_iter=args.max_iter, solver=args.solver, n_jobs=args.n_jobs
     )
 
-    show_results(X_train, y_train, X_test, y_test, params, with_sklearn=1)
+    show_results(X_train, y_train, X_test, y_test, params)
