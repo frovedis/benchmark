@@ -1,0 +1,1 @@
+Each `.py` file can be executed as command line script.
