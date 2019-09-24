@@ -2,6 +2,7 @@ import sys
 import time
 import numpy as np
 import scipy
+import os
 
 
 def run_sklearn(params, X_train, y_train, X_test, y_test):
@@ -22,10 +23,9 @@ def run_frovedis(params, X_train, y_train, X_test, y_test, nproc):
     from frovedis.mllib.linear_model import LogisticRegression
 
     FrovedisServer.initialize(
-        "{mpirun} -np {nproc} -x {server}".format(
-            mpirun="/opt/nec/ve/bin/mpirun",
+        "mpirun -np {nproc} {server}".format(
             nproc=nproc,
-            server="/opt/nec/nosupport/frovedis/ve/bin/frovedis_server"
+            server=os.environ['FROVEDIS_SERVER']
         )
     )
 
@@ -93,3 +93,4 @@ if __name__ == "__main__":
     )
 
     show_results(X_train, y_train, X_test, y_test, params)
+
