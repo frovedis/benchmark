@@ -2,6 +2,7 @@ import sys
 import time
 import numpy as np
 import scipy
+import os
 
 
 def run_sklearn(params, X):
@@ -19,10 +20,9 @@ def run_frovedis(params, X, nproc):
     from frovedis.matrix.wrapper import ARPACK
 
     FrovedisServer.initialize(
-        "{mpirun} -np {nproc} -x {server}".format(
-            mpirun="/opt/nec/ve/bin/mpirun",
+        "mpirun -np {nproc} {server}".format(
             nproc=nproc,
-            server="/opt/nec/nosupport/frovedis/ve/bin/frovedis_server"
+            server=os.environ['FROVEDIS_SERVER']
         )
     )
 
