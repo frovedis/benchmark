@@ -7,6 +7,6 @@
 
 source /opt/nec/nosupport/frovedis/ve/bin/veenv.sh
 
-script_dir=$HOME/frovedis  # SET YOUR OWN PATH
+script_dir=$HOME/test/frovedis  # SET YOUR OWN PATH
 
 python $script_dir/basic.py
